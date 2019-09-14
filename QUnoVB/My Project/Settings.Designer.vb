@@ -53,6 +53,30 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Player 1")>  _
+        Public Property DefaultHumanPlayerName() As String
+            Get
+                Return CType(Me("DefaultHumanPlayerName"),String)
+            End Get
+            Set
+                Me("DefaultHumanPlayerName") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("3")>  _
+        Public Property DefaultComputerPlayers() As Integer
+            Get
+                Return CType(Me("DefaultComputerPlayers"),Integer)
+            End Get
+            Set
+                Me("DefaultComputerPlayers") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
