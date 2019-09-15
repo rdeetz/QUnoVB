@@ -34,7 +34,7 @@ Partial Class OptionsForm
         'buttonOk
         '
         Me.buttonOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.buttonOk.Location = New System.Drawing.Point(405, 377)
+        Me.buttonOk.Location = New System.Drawing.Point(206, 194)
         Me.buttonOk.Name = "buttonOk"
         Me.buttonOk.Size = New System.Drawing.Size(75, 23)
         Me.buttonOk.TabIndex = 4
@@ -45,7 +45,7 @@ Partial Class OptionsForm
         '
         Me.buttonCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonCancel.Location = New System.Drawing.Point(486, 377)
+        Me.buttonCancel.Location = New System.Drawing.Point(287, 194)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(75, 23)
         Me.buttonCancel.TabIndex = 5
@@ -63,9 +63,11 @@ Partial Class OptionsForm
         '
         'textDefaultPlayerName
         '
+        Me.textDefaultPlayerName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textDefaultPlayerName.Location = New System.Drawing.Point(18, 44)
         Me.textDefaultPlayerName.Name = "textDefaultPlayerName"
-        Me.textDefaultPlayerName.Size = New System.Drawing.Size(543, 39)
+        Me.textDefaultPlayerName.Size = New System.Drawing.Size(344, 39)
         Me.textDefaultPlayerName.TabIndex = 1
         '
         'labelDefaultComputerPlayers
@@ -79,9 +81,11 @@ Partial Class OptionsForm
         '
         'spinDefaultComputerPlayers
         '
+        Me.spinDefaultComputerPlayers.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.spinDefaultComputerPlayers.Location = New System.Drawing.Point(18, 121)
         Me.spinDefaultComputerPlayers.Name = "spinDefaultComputerPlayers"
-        Me.spinDefaultComputerPlayers.Size = New System.Drawing.Size(120, 39)
+        Me.spinDefaultComputerPlayers.Size = New System.Drawing.Size(344, 39)
         Me.spinDefaultComputerPlayers.TabIndex = 3
         '
         'OptionsForm
@@ -90,7 +94,7 @@ Partial Class OptionsForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.buttonCancel
-        Me.ClientSize = New System.Drawing.Size(573, 412)
+        Me.ClientSize = New System.Drawing.Size(374, 229)
         Me.Controls.Add(Me.spinDefaultComputerPlayers)
         Me.Controls.Add(Me.labelDefaultComputerPlayers)
         Me.Controls.Add(Me.textDefaultPlayerName)

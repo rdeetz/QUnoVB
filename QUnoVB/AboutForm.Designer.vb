@@ -34,7 +34,7 @@ Partial Class AboutForm
         '
         Me.buttonOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.buttonOk.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.buttonOk.Location = New System.Drawing.Point(687, 294)
+        Me.buttonOk.Location = New System.Drawing.Point(287, 194)
         Me.buttonOk.Name = "buttonOk"
         Me.buttonOk.Size = New System.Drawing.Size(75, 23)
         Me.buttonOk.TabIndex = 0
@@ -73,7 +73,7 @@ Partial Class AboutForm
         'labelCopyright
         '
         Me.labelCopyright.AutoSize = True
-        Me.labelCopyright.Location = New System.Drawing.Point(66, 116)
+        Me.labelCopyright.Location = New System.Drawing.Point(66, 76)
         Me.labelCopyright.Name = "labelCopyright"
         Me.labelCopyright.Size = New System.Drawing.Size(554, 32)
         Me.labelCopyright.TabIndex = 4
@@ -85,7 +85,7 @@ Partial Class AboutForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.buttonOk
-        Me.ClientSize = New System.Drawing.Size(774, 329)
+        Me.ClientSize = New System.Drawing.Size(374, 229)
         Me.Controls.Add(Me.labelCopyright)
         Me.Controls.Add(Me.labelVersion)
         Me.Controls.Add(Me.labelTitle)
