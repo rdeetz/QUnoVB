@@ -84,9 +84,12 @@ Partial Class OptionsForm
         Me.spinDefaultComputerPlayers.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.spinDefaultComputerPlayers.Location = New System.Drawing.Point(18, 121)
+        Me.spinDefaultComputerPlayers.Maximum = New Decimal(New Integer() {9, 0, 0, 0})
+        Me.spinDefaultComputerPlayers.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.spinDefaultComputerPlayers.Name = "spinDefaultComputerPlayers"
         Me.spinDefaultComputerPlayers.Size = New System.Drawing.Size(344, 39)
         Me.spinDefaultComputerPlayers.TabIndex = 3
+        Me.spinDefaultComputerPlayers.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'OptionsForm
         '
