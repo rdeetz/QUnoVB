@@ -41,12 +41,14 @@ Partial Class MainForm
         Me.buttonDraw = New System.Windows.Forms.Button()
         Me.listComputerPlayers = New System.Windows.Forms.ListBox()
         Me.labelCurrentDirection = New System.Windows.Forms.Label()
+        Me.labelHumanName = New System.Windows.Forms.Label()
         Me.mainMenu.SuspendLayout()
         Me.mainStatus.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainMenu
         '
+        Me.mainMenu.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.mainMenu.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GameToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.mainMenu.Location = New System.Drawing.Point(0, 0)
@@ -183,11 +185,21 @@ Partial Class MainForm
         Me.labelCurrentDirection.TabIndex = 8
         Me.labelCurrentDirection.Text = "{0}"
         '
+        'labelHumanName
+        '
+        Me.labelHumanName.AutoSize = True
+        Me.labelHumanName.Location = New System.Drawing.Point(419, 582)
+        Me.labelHumanName.Name = "labelHumanName"
+        Me.labelHumanName.Size = New System.Drawing.Size(42, 32)
+        Me.labelHumanName.TabIndex = 9
+        Me.labelHumanName.Text = "{0}"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(998, 697)
+        Me.Controls.Add(Me.labelHumanName)
         Me.Controls.Add(Me.listComputerPlayers)
         Me.Controls.Add(Me.buttonPlay)
         Me.Controls.Add(Me.buttonDraw)
@@ -231,4 +243,5 @@ Partial Class MainForm
     Friend WithEvents buttonDraw As Button
     Friend WithEvents listComputerPlayers As ListBox
     Friend WithEvents labelCurrentDirection As Label
+    Friend WithEvents labelHumanName As Label
 End Class

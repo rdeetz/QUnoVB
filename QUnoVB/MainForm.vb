@@ -25,7 +25,7 @@ Public Class MainForm
 
         CurrentGame.Deal()
 
-        RedrawGameState()
+        RefreshGameState()
     End Sub
 
     Private Sub PlayerChanged(sender As Object, e As EventArgs) Handles CurrentGame.PlayerChanged
@@ -60,11 +60,54 @@ Public Class MainForm
             ' Game over!
         End If
 
-        RedrawGameState()
+        RefreshGameState()
     End Sub
 
-    Private Sub RedrawGameState()
+    Private Sub RefreshGameState()
+        Dim human As Player
+        human = CurrentGame.Players.First(Function(p) p.IsHuman)
 
+        listComputerPlayers.Items.Clear()
+
+        For Each player In CurrentGame.Players.Where(Function(p) Not p.IsHuman)
+            listComputerPlayers.Items.Add(
+                String.Format("{0} {1}", player.Name, player.Hand.Cards.Count))
+        Next
+
+        labelCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
+        labelCurrentWildColor.Text = CurrentGame.Deck.CurrentWildColor.ToString()
+        labelCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
+
+        labelHumanName.Text = human.Name
+        listHumanHand.Items.Clear()
+
+        For Each card In human.Hand.Cards
+            listHumanHand.Items.Add(card)
+        Next
+    End Sub
+
+    Private Sub ListHumanHand_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listHumanHand.SelectedIndexChanged
+        Dim selectedCard = listHumanHand.SelectedItem
+
+        If CurrentGame.CanPlay(selectedCard) Then
+            buttonPlay.Enabled = True
+        Else
+            buttonPlay.Enabled = False
+        End If
+    End Sub
+
+    Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
+        Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
+        Dim selectedCard = listHumanHand.SelectedItem
+        human.Hand.Cards.Remove(selectedCard)
+        CurrentGame.PlayCard(selectedCard)
+        ' TODO Prompt for a wild color if this is a wild card.
+    End Sub
+
+    Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles buttonDraw.Click
+        Dim drawnCard = CurrentGame.DrawCard()
+        Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
+        human.Hand.Cards.Add(drawnCard)
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
