@@ -24,6 +24,8 @@ Public Class MainForm
         Next
 
         CurrentGame.Deal()
+
+        RedrawGameState()
     End Sub
 
     Private Sub PlayerChanged(sender As Object, e As EventArgs) Handles CurrentGame.PlayerChanged
@@ -57,6 +59,12 @@ Public Class MainForm
         Else
             ' Game over!
         End If
+
+        RedrawGameState()
+    End Sub
+
+    Private Sub RedrawGameState()
+
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
