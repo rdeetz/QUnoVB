@@ -64,7 +64,7 @@ Public Class MainForm
                 End If
             End If
         Else
-            ' Game over!
+            labelStatus.Text = String.Format("Game over! {0} is the winner.", FindWinner())
         End If
 
         RefreshGameState()
@@ -154,4 +154,10 @@ Public Class MainForm
         Log.Add(message)
         listGameLog.Items.Insert(0, message)
     End Sub
+
+    Private Function FindWinner() As String
+        Dim winner As Player
+        winner = CurrentGame.Players.First(Function(p) p.Hand.Cards.Count = 0)
+        Return winner.Name
+    End Function
 End Class
