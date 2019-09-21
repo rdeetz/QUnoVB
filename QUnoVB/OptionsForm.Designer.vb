@@ -98,12 +98,12 @@ Partial Class OptionsForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.buttonCancel
         Me.ClientSize = New System.Drawing.Size(374, 229)
-        Me.Controls.Add(Me.spinDefaultComputerPlayers)
-        Me.Controls.Add(Me.labelDefaultComputerPlayers)
-        Me.Controls.Add(Me.textDefaultPlayerName)
         Me.Controls.Add(Me.labelDefaultPlayerName)
-        Me.Controls.Add(Me.buttonCancel)
+        Me.Controls.Add(Me.textDefaultPlayerName)
+        Me.Controls.Add(Me.labelDefaultComputerPlayers)
+        Me.Controls.Add(Me.spinDefaultComputerPlayers)
         Me.Controls.Add(Me.buttonOk)
+        Me.Controls.Add(Me.buttonCancel)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)

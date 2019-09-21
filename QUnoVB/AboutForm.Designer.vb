@@ -58,7 +58,7 @@ Partial Class AboutForm
         Me.labelTitle.Location = New System.Drawing.Point(66, 12)
         Me.labelTitle.Name = "labelTitle"
         Me.labelTitle.Size = New System.Drawing.Size(80, 32)
-        Me.labelTitle.TabIndex = 2
+        Me.labelTitle.TabIndex = 1
         Me.labelTitle.Text = "QUno"
         '
         'labelVersion
@@ -67,7 +67,7 @@ Partial Class AboutForm
         Me.labelVersion.Location = New System.Drawing.Point(66, 44)
         Me.labelVersion.Name = "labelVersion"
         Me.labelVersion.Size = New System.Drawing.Size(127, 32)
-        Me.labelVersion.TabIndex = 3
+        Me.labelVersion.TabIndex = 2
         Me.labelVersion.Text = "Version {0}"
         '
         'labelCopyright
@@ -76,7 +76,7 @@ Partial Class AboutForm
         Me.labelCopyright.Location = New System.Drawing.Point(66, 76)
         Me.labelCopyright.Name = "labelCopyright"
         Me.labelCopyright.Size = New System.Drawing.Size(554, 32)
-        Me.labelCopyright.TabIndex = 4
+        Me.labelCopyright.TabIndex = 3
         Me.labelCopyright.Text = "Copyright © 2019 Roger Deetz. All rights reserved."
         '
         'AboutForm
@@ -86,10 +86,10 @@ Partial Class AboutForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.buttonOk
         Me.ClientSize = New System.Drawing.Size(374, 229)
-        Me.Controls.Add(Me.labelCopyright)
-        Me.Controls.Add(Me.labelVersion)
-        Me.Controls.Add(Me.labelTitle)
         Me.Controls.Add(Me.pictureIcon)
+        Me.Controls.Add(Me.labelTitle)
+        Me.Controls.Add(Me.labelVersion)
+        Me.Controls.Add(Me.labelCopyright)
         Me.Controls.Add(Me.buttonOk)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

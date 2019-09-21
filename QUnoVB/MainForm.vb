@@ -74,9 +74,9 @@ Public Class MainForm
                 String.Format("{0} {1}", player.Name, player.Hand.Cards.Count))
         Next
 
-        labelCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
-        labelCurrentWildColor.Text = CurrentGame.Deck.CurrentWildColor.ToString()
-        labelCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
+        textCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
+        textCurrentWildColor.Text = CurrentGame.Deck.CurrentWildColor.ToString()
+        textCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
 
         labelHumanName.Text = human.Name
         listHumanHand.Items.Clear()

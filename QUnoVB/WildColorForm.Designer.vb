@@ -25,6 +25,7 @@ Partial Class WildColorForm
         Me.buttonOk = New System.Windows.Forms.Button()
         Me.buttonCancel = New System.Windows.Forms.Button()
         Me.listColors = New System.Windows.Forms.ListBox()
+        Me.labelColors = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'buttonOk
@@ -33,7 +34,7 @@ Partial Class WildColorForm
         Me.buttonOk.Location = New System.Drawing.Point(206, 194)
         Me.buttonOk.Name = "buttonOk"
         Me.buttonOk.Size = New System.Drawing.Size(75, 23)
-        Me.buttonOk.TabIndex = 1
+        Me.buttonOk.TabIndex = 2
         Me.buttonOk.Text = "OK"
         Me.buttonOk.UseVisualStyleBackColor = True
         '
@@ -44,19 +45,31 @@ Partial Class WildColorForm
         Me.buttonCancel.Location = New System.Drawing.Point(287, 194)
         Me.buttonCancel.Name = "buttonCancel"
         Me.buttonCancel.Size = New System.Drawing.Size(75, 23)
-        Me.buttonCancel.TabIndex = 2
+        Me.buttonCancel.TabIndex = 3
         Me.buttonCancel.Text = "Cancel"
         Me.buttonCancel.UseVisualStyleBackColor = True
         '
         'listColors
         '
+        Me.listColors.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.listColors.FormattingEnabled = True
         Me.listColors.ItemHeight = 32
         Me.listColors.Items.AddRange(New Object() {"Red", "Blue", "Yellow", "Green"})
-        Me.listColors.Location = New System.Drawing.Point(12, 12)
+        Me.listColors.Location = New System.Drawing.Point(12, 44)
         Me.listColors.Name = "listColors"
-        Me.listColors.Size = New System.Drawing.Size(350, 164)
-        Me.listColors.TabIndex = 0
+        Me.listColors.Size = New System.Drawing.Size(350, 132)
+        Me.listColors.TabIndex = 1
+        '
+        'labelColors
+        '
+        Me.labelColors.AutoSize = True
+        Me.labelColors.Location = New System.Drawing.Point(12, 9)
+        Me.labelColors.Name = "labelColors"
+        Me.labelColors.Size = New System.Drawing.Size(77, 32)
+        Me.labelColors.TabIndex = 0
+        Me.labelColors.Text = "&Color:"
         '
         'WildColorForm
         '
@@ -65,6 +78,7 @@ Partial Class WildColorForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.buttonCancel
         Me.ClientSize = New System.Drawing.Size(374, 229)
+        Me.Controls.Add(Me.labelColors)
         Me.Controls.Add(Me.listColors)
         Me.Controls.Add(Me.buttonOk)
         Me.Controls.Add(Me.buttonCancel)
@@ -79,10 +93,12 @@ Partial Class WildColorForm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Choose Wild Color"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents buttonOk As Button
     Friend WithEvents buttonCancel As Button
     Friend WithEvents listColors As ListBox
+    Friend WithEvents labelColors As Label
 End Class
