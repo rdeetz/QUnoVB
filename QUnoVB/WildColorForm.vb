@@ -1,23 +1,25 @@
 ﻿Imports Mooville.QUno.Model
 
 Public Class WildColorForm
+    Public WildColor As Color
+
+    Private Sub WildColorForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        listColors.SelectedIndex = 0
+    End Sub
+
     Private Sub ButtonOk_Click(sender As Object, e As EventArgs) Handles buttonOk.Click
-        Dim wildColor As Color
-        Dim color = listColors.SelectedItem
-
-        Select Case color
+        Dim colorName As String = listColors.SelectedItem
+        Select Case colorName
             Case "Red"
-                wildColor = Model.Color.Red
+                WildColor = Color.Red
             Case "Blue"
-                wildColor = Model.Color.Blue
+                WildColor = Color.Blue
             Case "Yellow"
-                wildColor = Model.Color.Yellow
+                WildColor = Color.Yellow
             Case "Green"
-                wildColor = Model.Color.Green
+                WildColor = Color.Green
         End Select
-
-        DialogResult = wildColor
-
+        DialogResult = DialogResult.OK
         Close()
     End Sub
 

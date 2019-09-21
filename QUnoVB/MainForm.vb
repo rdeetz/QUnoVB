@@ -2,6 +2,7 @@
 
 Public Class MainForm
     Dim WithEvents CurrentGame As Game
+    Dim HumanPlayer As Player
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         Dim humanPlayerName As String
@@ -11,10 +12,10 @@ Public Class MainForm
 
         CurrentGame = New Game
 
-        Dim humanPlayer As New Player
-        humanPlayer.Name = humanPlayerName
-        humanPlayer.IsHuman = True
-        CurrentGame.Players.Add(humanPlayer)
+        HumanPlayer = New Player
+        HumanPlayer.Name = humanPlayerName
+        HumanPlayer.IsHuman = True
+        CurrentGame.Players.Add(HumanPlayer)
 
         For i = 1 To computerPlayerCount
             Dim computerPlayer As New Player
@@ -63,49 +64,26 @@ Public Class MainForm
         RefreshGameState()
     End Sub
 
-    Private Sub RefreshGameState()
-        Dim human As Player
-        human = CurrentGame.Players.First(Function(p) p.IsHuman)
-
-        listComputerPlayers.Items.Clear()
-
-        For Each player In CurrentGame.Players.Where(Function(p) Not p.IsHuman)
-            listComputerPlayers.Items.Add(
-                String.Format("{0} {1}", player.Name, player.Hand.Cards.Count))
-        Next
-
-        textCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
-        textCurrentWildColor.Text = CurrentGame.Deck.CurrentWildColor.ToString()
-        textCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
-
-        labelHumanName.Text = human.Name
-        listHumanHand.Items.Clear()
-
-        For Each card In human.Hand.Cards
-            listHumanHand.Items.Add(card)
-        Next
-    End Sub
-
     Private Sub ListHumanHand_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listHumanHand.SelectedIndexChanged
-        Dim selectedCard = listHumanHand.SelectedItem
-
-        If CurrentGame.CanPlay(selectedCard) Then
-            buttonPlay.Enabled = True
-        Else
-            buttonPlay.Enabled = False
-        End If
+        Dim selectedCard As Card = listHumanHand.SelectedItem
+        buttonPlay.Enabled = CurrentGame.CanPlay(selectedCard)
     End Sub
 
     Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
-        Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
         Dim selectedCard As Card = listHumanHand.SelectedItem
 
-        human.Hand.Cards.Remove(selectedCard)
-
         If selectedCard.Color = Color.Wild Then
-            Dim wildColor = WildColorForm.ShowDialog(Me)
-            CurrentGame.PlayCard(selectedCard, wildColor)
+            Dim result As DialogResult
+            result = WildColorForm.ShowDialog(Me)
+
+            If result = DialogResult.OK Then
+                Dim wildColor As Color
+                wildColor = WildColorForm.WildColor
+                HumanPlayer.Hand.Cards.Remove(selectedCard)
+                CurrentGame.PlayCard(selectedCard, wildColor)
+            End If
         Else
+            HumanPlayer.Hand.Cards.Remove(selectedCard)
             CurrentGame.PlayCard(selectedCard)
         End If
 
@@ -114,8 +92,7 @@ Public Class MainForm
 
     Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles buttonDraw.Click
         Dim drawnCard = CurrentGame.DrawCard()
-        Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
-        human.Hand.Cards.Add(drawnCard)
+        HumanPlayer.Hand.Cards.Add(drawnCard)
 
         RefreshGameState()
     End Sub
@@ -131,5 +108,25 @@ Public Class MainForm
 
     Private Sub AboutQUnoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         AboutForm.ShowDialog(Me)
+    End Sub
+
+    Private Sub RefreshGameState()
+        labelHumanName.Text = HumanPlayer.Name
+        listHumanHand.Items.Clear()
+
+        For Each card In HumanPlayer.Hand.Cards
+            listHumanHand.Items.Add(card)
+        Next
+
+        textCurrentPlayer.Text = CurrentGame.CurrentPlayer.Name
+        textCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
+        textCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
+        textCurrentWildColor.Text = CurrentGame.Deck.CurrentWildColor.ToString()
+
+        listComputerPlayers.Items.Clear()
+
+        For Each player In CurrentGame.Players.Where(Function(p) Not p.IsHuman)
+            listComputerPlayers.Items.Add(String.Format("{0} has {1} cards left", player.Name, player.Hand.Cards.Count))
+        Next
     End Sub
 End Class
