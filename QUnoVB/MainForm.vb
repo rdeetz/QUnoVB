@@ -98,16 +98,26 @@ Public Class MainForm
 
     Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
         Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
-        Dim selectedCard = listHumanHand.SelectedItem
+        Dim selectedCard As Card = listHumanHand.SelectedItem
+
         human.Hand.Cards.Remove(selectedCard)
-        CurrentGame.PlayCard(selectedCard)
-        ' TODO Prompt for a wild color if this is a wild card.
+
+        If selectedCard.Color = Color.Wild Then
+            Dim wildColor = WildColorForm.ShowDialog(Me)
+            CurrentGame.PlayCard(selectedCard, wildColor)
+        Else
+            CurrentGame.PlayCard(selectedCard)
+        End If
+
+        RefreshGameState()
     End Sub
 
     Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles buttonDraw.Click
         Dim drawnCard = CurrentGame.DrawCard()
         Dim human = CurrentGame.Players.First(Function(p) p.IsHuman)
         human.Hand.Cards.Add(drawnCard)
+
+        RefreshGameState()
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -116,10 +126,10 @@ Public Class MainForm
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
         Dim result As DialogResult
-        result = OptionsForm.ShowDialog()
+        result = OptionsForm.ShowDialog(Me)
     End Sub
 
     Private Sub AboutQUnoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-        AboutForm.ShowDialog()
+        AboutForm.ShowDialog(Me)
     End Sub
 End Class

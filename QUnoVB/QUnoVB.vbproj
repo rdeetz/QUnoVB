@@ -127,6 +127,12 @@
     <Compile Include="OptionsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WildColorForm.Designer.vb">
+      <DependentUpon>WildColorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WildColorForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsForm.resx">
       <DependentUpon>OptionsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WildColorForm.resx">
+      <DependentUpon>WildColorForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
