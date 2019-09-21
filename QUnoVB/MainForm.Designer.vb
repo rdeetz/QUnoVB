@@ -50,6 +50,7 @@ Partial Class MainForm
         Me.textCurrentWildColor = New System.Windows.Forms.TextBox()
         Me.labelCurrentWildColor = New System.Windows.Forms.Label()
         Me.labelComputerPlayers = New System.Windows.Forms.Label()
+        Me.listGameLog = New System.Windows.Forms.ListBox()
         Me.mainMenu.SuspendLayout()
         Me.mainStatus.SuspendLayout()
         Me.groupGameInfo.SuspendLayout()
@@ -62,14 +63,14 @@ Partial Class MainForm
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GameToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.mainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mainMenu.Name = "mainMenu"
-        Me.mainMenu.Size = New System.Drawing.Size(998, 40)
+        Me.mainMenu.Size = New System.Drawing.Size(998, 48)
         Me.mainMenu.TabIndex = 0
         '
         'GameToolStripMenuItem
         '
         Me.GameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.separatorGameMenu, Me.ExitToolStripMenuItem})
         Me.GameToolStripMenuItem.Name = "GameToolStripMenuItem"
-        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 36)
+        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 44)
         Me.GameToolStripMenuItem.Text = "&Game"
         '
         'NewToolStripMenuItem
@@ -94,7 +95,7 @@ Partial Class MainForm
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 36)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 44)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'OptionsToolStripMenuItem
@@ -107,7 +108,7 @@ Partial Class MainForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 36)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 44)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
@@ -166,7 +167,8 @@ Partial Class MainForm
         Me.listComputerPlayers.ItemHeight = 32
         Me.listComputerPlayers.Location = New System.Drawing.Point(12, 363)
         Me.listComputerPlayers.Name = "listComputerPlayers"
-        Me.listComputerPlayers.Size = New System.Drawing.Size(974, 260)
+        Me.listComputerPlayers.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.listComputerPlayers.Size = New System.Drawing.Size(974, 164)
         Me.listComputerPlayers.TabIndex = 17
         '
         'labelHumanName
@@ -284,6 +286,20 @@ Partial Class MainForm
         Me.labelComputerPlayers.TabIndex = 16
         Me.labelComputerPlayers.Text = "&Computer players:"
         '
+        'listGameLog
+        '
+        Me.listGameLog.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.listGameLog.BackColor = System.Drawing.SystemColors.Control
+        Me.listGameLog.FormattingEnabled = True
+        Me.listGameLog.ItemHeight = 32
+        Me.listGameLog.Location = New System.Drawing.Point(12, 533)
+        Me.listGameLog.Name = "listGameLog"
+        Me.listGameLog.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.listGameLog.Size = New System.Drawing.Size(974, 100)
+        Me.listGameLog.TabIndex = 18
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
@@ -297,6 +313,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.groupGameInfo)
         Me.Controls.Add(Me.labelComputerPlayers)
         Me.Controls.Add(Me.listComputerPlayers)
+        Me.Controls.Add(Me.listGameLog)
         Me.Controls.Add(Me.mainMenu)
         Me.Controls.Add(Me.mainStatus)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -344,4 +361,5 @@ Partial Class MainForm
     Friend WithEvents textCurrentCard As TextBox
     Friend WithEvents labelCurrentCard As Label
     Friend WithEvents labelComputerPlayers As Label
+    Friend WithEvents listGameLog As ListBox
 End Class
