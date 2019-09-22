@@ -5,6 +5,10 @@ Public Class MainForm
     Dim HumanPlayer As Player
     Dim Log As List(Of String)
 
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ToggleGameControls()
+    End Sub
+
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         Dim humanPlayerName As String
         humanPlayerName = My.Settings.DefaultHumanPlayerName
@@ -28,6 +32,7 @@ Public Class MainForm
 
         CurrentGame.Deal()
 
+        ToggleGameControls()
         RefreshGameState()
         listGameLog.Items.Clear()
     End Sub
@@ -65,6 +70,7 @@ Public Class MainForm
             End If
         Else
             labelStatus.Text = String.Format("Game over! {0} is the winner.", FindWinner())
+            ToggleGameControls()
         End If
 
         RefreshGameState()
@@ -127,6 +133,8 @@ Public Class MainForm
             listHumanHand.Items.Add(card)
         Next
 
+        listHumanHand.SelectedIndex = 0
+
         textCurrentPlayer.Text = CurrentGame.CurrentPlayer.Name
         textCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
         textCurrentDirection.Text = CurrentGame.CurrentDirection.ToString()
@@ -137,6 +145,21 @@ Public Class MainForm
         For Each player In CurrentGame.Players.Where(Function(p) Not p.IsHuman)
             listComputerPlayers.Items.Add(String.Format("{0} has {1} cards left", player.Name, player.Hand.Cards.Count))
         Next
+
+        listHumanHand.Focus()
+    End Sub
+
+    Private Sub ToggleGameControls()
+        If IsGameInProgress() Then
+            listHumanHand.Enabled = True
+            buttonPlay.Enabled = True
+            buttonDraw.Enabled = True
+            labelStatus.Text = "Ready"
+        Else
+            listHumanHand.Enabled = False
+            buttonPlay.Enabled = False
+            buttonDraw.Enabled = False
+        End If
     End Sub
 
     Private Sub LogTurn(player As Player, card As Card, wildColor As Color?, mode As Integer)
@@ -154,6 +177,16 @@ Public Class MainForm
         Log.Add(message)
         listGameLog.Items.Insert(0, message)
     End Sub
+
+    Private Function IsGameInProgress() As Boolean
+        Dim inProgress As Boolean = False
+        If CurrentGame IsNot Nothing Then
+            If Not CurrentGame.IsGameOver Then
+                inProgress = True
+            End If
+        End If
+        Return inProgress
+    End Function
 
     Private Function FindWinner() As String
         Dim winner As Player

@@ -47,8 +47,8 @@ Partial Class MainForm
         Me.textCurrentCard = New System.Windows.Forms.TextBox()
         Me.labelCurrentDirection = New System.Windows.Forms.Label()
         Me.textCurrentDirection = New System.Windows.Forms.TextBox()
-        Me.textCurrentWildColor = New System.Windows.Forms.TextBox()
         Me.labelCurrentWildColor = New System.Windows.Forms.Label()
+        Me.textCurrentWildColor = New System.Windows.Forms.TextBox()
         Me.labelComputerPlayers = New System.Windows.Forms.Label()
         Me.listGameLog = New System.Windows.Forms.ListBox()
         Me.mainMenu.SuspendLayout()
@@ -77,18 +77,18 @@ Partial Class MainForm
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(283, 44)
         Me.NewToolStripMenuItem.Text = "&New"
         '
         'separatorGameMenu
         '
         Me.separatorGameMenu.Name = "separatorGameMenu"
-        Me.separatorGameMenu.Size = New System.Drawing.Size(356, 6)
+        Me.separatorGameMenu.Size = New System.Drawing.Size(280, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(283, 44)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ToolsToolStripMenuItem
@@ -101,7 +101,7 @@ Partial Class MainForm
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(248, 44)
         Me.OptionsToolStripMenuItem.Text = "&Options..."
         '
         'HelpToolStripMenuItem
@@ -114,7 +114,7 @@ Partial Class MainForm
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(283, 44)
         Me.AboutToolStripMenuItem.Text = "&About QUno"
         '
         'mainStatus
@@ -170,6 +170,7 @@ Partial Class MainForm
         Me.listComputerPlayers.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.listComputerPlayers.Size = New System.Drawing.Size(974, 164)
         Me.listComputerPlayers.TabIndex = 17
+        Me.listComputerPlayers.TabStop = False
         '
         'labelHumanName
         '
@@ -197,6 +198,7 @@ Partial Class MainForm
         Me.textCurrentPlayer.ReadOnly = True
         Me.textCurrentPlayer.Size = New System.Drawing.Size(278, 39)
         Me.textCurrentPlayer.TabIndex = 9
+        Me.textCurrentPlayer.TabStop = False
         '
         'labelCurrentPlayer
         '
@@ -242,6 +244,7 @@ Partial Class MainForm
         Me.textCurrentCard.ReadOnly = True
         Me.textCurrentCard.Size = New System.Drawing.Size(278, 39)
         Me.textCurrentCard.TabIndex = 11
+        Me.textCurrentCard.TabStop = False
         '
         'labelCurrentDirection
         '
@@ -259,14 +262,7 @@ Partial Class MainForm
         Me.textCurrentDirection.ReadOnly = True
         Me.textCurrentDirection.Size = New System.Drawing.Size(278, 39)
         Me.textCurrentDirection.TabIndex = 13
-        '
-        'textCurrentWildColor
-        '
-        Me.textCurrentWildColor.Location = New System.Drawing.Point(222, 167)
-        Me.textCurrentWildColor.Name = "textCurrentWildColor"
-        Me.textCurrentWildColor.ReadOnly = True
-        Me.textCurrentWildColor.Size = New System.Drawing.Size(278, 39)
-        Me.textCurrentWildColor.TabIndex = 15
+        Me.textCurrentDirection.TabStop = False
         '
         'labelCurrentWildColor
         '
@@ -276,6 +272,15 @@ Partial Class MainForm
         Me.labelCurrentWildColor.Size = New System.Drawing.Size(210, 32)
         Me.labelCurrentWildColor.TabIndex = 14
         Me.labelCurrentWildColor.Text = "Current wild color:"
+        '
+        'textCurrentWildColor
+        '
+        Me.textCurrentWildColor.Location = New System.Drawing.Point(222, 167)
+        Me.textCurrentWildColor.Name = "textCurrentWildColor"
+        Me.textCurrentWildColor.ReadOnly = True
+        Me.textCurrentWildColor.Size = New System.Drawing.Size(278, 39)
+        Me.textCurrentWildColor.TabIndex = 15
+        Me.textCurrentWildColor.TabStop = False
         '
         'labelComputerPlayers
         '
@@ -299,6 +304,7 @@ Partial Class MainForm
         Me.listGameLog.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.listGameLog.Size = New System.Drawing.Size(974, 100)
         Me.listGameLog.TabIndex = 18
+        Me.listGameLog.TabStop = False
         '
         'MainForm
         '
