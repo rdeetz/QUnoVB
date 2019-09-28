@@ -17,14 +17,18 @@ Public Class MainForm
         Log = New List(Of String)
 
         HumanPlayer = New Player
-        HumanPlayer.Name = humanPlayerName
-        HumanPlayer.IsHuman = True
+        With HumanPlayer
+            .Name = humanPlayerName
+            .IsHuman = True
+        End With
         CurrentGame.Players.Add(HumanPlayer)
 
         For i = 1 To computerPlayerCount
             Dim computerPlayer As New Player
-            computerPlayer.Name = String.Format("Player {0}", i + 1) ' Since the human is Player 1.
-            computerPlayer.IsHuman = False
+            With computerPlayer
+                .Name = String.Format("Player {0}", i + 1) ' Since the human is Player 1.
+                .IsHuman = False
+            End With
             CurrentGame.Players.Add(computerPlayer)
         Next
 
