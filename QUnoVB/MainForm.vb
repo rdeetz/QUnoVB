@@ -16,8 +16,8 @@ Public Class MainForm
     End Sub
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
-        SetNewGameUI()
         StartNewGame(My.Settings.DefaultHumanPlayerName, My.Settings.DefaultComputerPlayers)
+        SetNewGameUI()
         ToggleGameControlsUI()
         RefreshGameStatusUI()
     End Sub
@@ -42,11 +42,11 @@ Public Class MainForm
                     player.Hand.Cards.Add(cardToDraw)
                 End If
             End If
+            RefreshGameStatusUI()
         Else
             SetGameOverUI()
             ToggleGameControlsUI()
         End If
-        RefreshGameStatusUI()
     End Sub
 
     Private Sub ListHumanHand_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listHumanHand.SelectedIndexChanged
@@ -54,21 +54,17 @@ Public Class MainForm
         buttonPlay.Enabled = CurrentGame.CanPlay(selectedCard)
     End Sub
 
+    Private Sub ListHumanHand_DoubleClick(sender As Object, e As EventArgs) Handles listHumanHand.DoubleClick
+        Dim selectedCard As Card = listHumanHand.SelectedItem
+        If CurrentGame.CanPlay(selectedCard) Then
+            PlayCardUI(selectedCard)
+            RefreshGameStatusUI()
+        End If
+    End Sub
+
     Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
         Dim selectedCard As Card = listHumanHand.SelectedItem
-        If selectedCard.Color = Color.Wild Then
-            Dim result As DialogResult = WildColorForm.ShowDialog(Me)
-            If result = DialogResult.OK Then
-                Dim wildColor As Color = WildColorForm.WildColor
-                LogTurnUI(HumanPlayer, selectedCard, wildColor, LogMode.WildPlay)
-                HumanPlayer.Hand.Cards.Remove(selectedCard)
-                CurrentGame.PlayCard(selectedCard, wildColor)
-            End If
-        Else
-            LogTurnUI(HumanPlayer, selectedCard, Nothing, LogMode.Play)
-            HumanPlayer.Hand.Cards.Remove(selectedCard)
-            CurrentGame.PlayCard(selectedCard)
-        End If
+        PlayCardUI(selectedCard)
         RefreshGameStatusUI()
     End Sub
 
@@ -131,6 +127,7 @@ Public Class MainForm
 
     Private Sub SetNewGameUI()
         listGameLog.Items.Clear()
+        labelHumanName.Text = HumanPlayer.Name
     End Sub
 
     Private Sub ToggleGameControlsUI()
@@ -147,12 +144,13 @@ Public Class MainForm
     End Sub
 
     Private Sub RefreshGameStatusUI()
-        labelHumanName.Text = HumanPlayer.Name ' This really only needs to happen once per game.
         listHumanHand.Items.Clear()
         For Each card In HumanPlayer.Hand.Cards
             listHumanHand.Items.Add(card)
         Next
-        listHumanHand.SelectedIndex = 0
+        If listHumanHand.Items.Count > 0 Then
+            listHumanHand.SelectedIndex = 0
+        End If
 
         textCurrentPlayer.Text = CurrentGame.CurrentPlayer.Name
         textCurrentCard.Text = CurrentGame.Deck.CurrentCard.ToString()
@@ -169,6 +167,22 @@ Public Class MainForm
 
     Private Sub SetGameOverUI()
         labelStatus.Text = String.Format("Game over! {0} is the winner.", FindWinner())
+    End Sub
+
+    Private Sub PlayCardUI(selectedCard As Card)
+        If selectedCard.Color = Color.Wild Then
+            Dim result As DialogResult = WildColorForm.ShowDialog(Me)
+            If result = DialogResult.OK Then
+                Dim wildColor As Color = WildColorForm.WildColor
+                LogTurnUI(HumanPlayer, selectedCard, wildColor, LogMode.WildPlay)
+                HumanPlayer.Hand.Cards.Remove(selectedCard)
+                CurrentGame.PlayCard(selectedCard, wildColor)
+            End If
+        Else
+            LogTurnUI(HumanPlayer, selectedCard, Nothing, LogMode.Play)
+            HumanPlayer.Hand.Cards.Remove(selectedCard)
+            CurrentGame.PlayCard(selectedCard)
+        End If
     End Sub
 
     Private Sub LogTurnUI(player As Player, card As Card, wildColor As Color?, mode As LogMode)

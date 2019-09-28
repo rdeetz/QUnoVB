@@ -70,7 +70,7 @@ Partial Class MainForm
         '
         Me.GameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.separatorGameMenu, Me.ExitToolStripMenuItem})
         Me.GameToolStripMenuItem.Name = "GameToolStripMenuItem"
-        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 44)
+        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 40)
         Me.GameToolStripMenuItem.Text = "&Game"
         '
         'NewToolStripMenuItem
@@ -95,7 +95,7 @@ Partial Class MainForm
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 44)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 40)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'OptionsToolStripMenuItem
@@ -108,7 +108,7 @@ Partial Class MainForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 44)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 40)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
@@ -178,9 +178,9 @@ Partial Class MainForm
         Me.labelHumanName.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.labelHumanName.Location = New System.Drawing.Point(12, 40)
         Me.labelHumanName.Name = "labelHumanName"
-        Me.labelHumanName.Size = New System.Drawing.Size(47, 32)
+        Me.labelHumanName.Size = New System.Drawing.Size(145, 32)
         Me.labelHumanName.TabIndex = 2
-        Me.labelHumanName.Text = "{0}"
+        Me.labelHumanName.Text = "(No player)"
         '
         'labelHumanHand
         '
