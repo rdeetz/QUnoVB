@@ -1,6 +1,12 @@
 ﻿Imports Mooville.QUno.Model
 
 Public Class MainForm
+    Enum LogMode
+        Play
+        WildPlay
+        Draw
+    End Enum
+
     Dim WithEvents CurrentGame As Game
     Dim HumanPlayer As Player
     Dim Log As List(Of String)
@@ -47,14 +53,14 @@ Public Class MainForm
                 If cardToPlay IsNot Nothing Then
                     If cardToPlay.Color = Color.Wild Then
                         Dim wildColor As Color = player.ChooseWildColor()
-                        LogTurn(player, cardToPlay, wildColor, 1)
+                        LogTurn(player, cardToPlay, wildColor, LogMode.WildPlay)
                         CurrentGame.PlayCard(cardToPlay, wildColor)
                     Else
-                        LogTurn(player, cardToPlay, Nothing, 0)
+                        LogTurn(player, cardToPlay, Nothing, LogMode.Play)
                         CurrentGame.PlayCard(cardToPlay)
                     End If
                 Else
-                    LogTurn(player, Nothing, Nothing, 2)
+                    LogTurn(player, Nothing, Nothing, LogMode.Draw)
                     Dim cardToDraw As Card = CurrentGame.DrawCard()
                     player.Hand.Cards.Add(cardToDraw)
                 End If
@@ -78,12 +84,12 @@ Public Class MainForm
             Dim result As DialogResult = WildColorForm.ShowDialog(Me)
             If result = DialogResult.OK Then
                 Dim wildColor As Color = WildColorForm.WildColor
-                LogTurn(HumanPlayer, selectedCard, wildColor, 1)
+                LogTurn(HumanPlayer, selectedCard, wildColor, LogMode.WildPlay)
                 HumanPlayer.Hand.Cards.Remove(selectedCard)
                 CurrentGame.PlayCard(selectedCard, wildColor)
             End If
         Else
-            LogTurn(HumanPlayer, selectedCard, Nothing, 0)
+            LogTurn(HumanPlayer, selectedCard, Nothing, LogMode.Play)
             HumanPlayer.Hand.Cards.Remove(selectedCard)
             CurrentGame.PlayCard(selectedCard)
         End If
@@ -92,7 +98,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles buttonDraw.Click
-        LogTurn(HumanPlayer, Nothing, Nothing, 2)
+        LogTurn(HumanPlayer, Nothing, Nothing, LogMode.Draw)
         Dim drawnCard = CurrentGame.DrawCard()
         HumanPlayer.Hand.Cards.Add(drawnCard)
 
@@ -148,15 +154,15 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub LogTurn(player As Player, card As Card, wildColor As Color?, mode As Integer)
+    Private Sub LogTurn(player As Player, card As Card, wildColor As Color?, mode As LogMode)
         Dim message As String = String.Empty
         Select Case mode
-            Case 0
-                message = player.Name + " played " + card.ToString()
-            Case 1
-                message = player.Name + " played " + card.Value.ToString() + " and chose " + wildColor.ToString()
-            Case 2
-                message = player.Name + " drew a card"
+            Case LogMode.Play
+                message = String.Format("{0} played {1}", player.Name, card.ToString())
+            Case LogMode.WildPlay
+                message = String.Format("{0} played {1} and chose {2}", player.Name, card.Value.ToString(), wildColor.ToString())
+            Case LogMode.Draw
+                message = String.Format("{0} drew a card", player.Name)
         End Select
         Log.Add(message)
         listGameLog.Items.Insert(0, message)
