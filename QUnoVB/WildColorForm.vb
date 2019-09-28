@@ -8,8 +8,7 @@ Public Class WildColorForm
     End Sub
 
     Private Sub ButtonOk_Click(sender As Object, e As EventArgs) Handles buttonOk.Click
-        Dim colorName As String
-        colorName = listColors.SelectedItem
+        Dim colorName As String = listColors.SelectedItem
         Select Case colorName
             Case "Red"
                 WildColor = Color.Red

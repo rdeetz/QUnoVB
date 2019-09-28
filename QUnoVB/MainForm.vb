@@ -10,10 +10,8 @@ Public Class MainForm
     End Sub
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
-        Dim humanPlayerName As String
-        humanPlayerName = My.Settings.DefaultHumanPlayerName
-        Dim computerPlayerCount As Integer
-        computerPlayerCount = My.Settings.DefaultComputerPlayers
+        Dim humanPlayerName As String = My.Settings.DefaultHumanPlayerName
+        Dim computerPlayerCount As Integer = My.Settings.DefaultComputerPlayers
 
         CurrentGame = New Game
         Log = New List(Of String)
@@ -39,32 +37,21 @@ Public Class MainForm
 
     Private Sub PlayerChanged(sender As Object, e As EventArgs) Handles CurrentGame.PlayerChanged
         If Not CurrentGame.IsGameOver Then
-            Dim player As Player
-            player = CurrentGame.CurrentPlayer
-
+            Dim player As Player = CurrentGame.CurrentPlayer
             If Not player.IsHuman Then
-                ' Computer player chooses a card to play.
-                Dim cardToPlay As Card
-                cardToPlay = player.ChooseCardToPlay(CurrentGame)
-
+                Dim cardToPlay As Card = player.ChooseCardToPlay(CurrentGame)
                 If cardToPlay IsNot Nothing Then
-                    ' Play a card.
                     If cardToPlay.Color = Color.Wild Then
-                        ' Choose a wild color and play the card.
-                        Dim wildColor As Color
-                        wildColor = player.ChooseWildColor()
+                        Dim wildColor As Color = player.ChooseWildColor()
                         LogTurn(player, cardToPlay, wildColor, 1)
                         CurrentGame.PlayCard(cardToPlay, wildColor)
                     Else
-                        ' Play the card.
                         LogTurn(player, cardToPlay, Nothing, 0)
                         CurrentGame.PlayCard(cardToPlay)
                     End If
                 Else
-                    ' Draw a card.
                     LogTurn(player, Nothing, Nothing, 2)
-                    Dim cardToDraw As Card
-                    cardToDraw = CurrentGame.DrawCard()
+                    Dim cardToDraw As Card = CurrentGame.DrawCard()
                     player.Hand.Cards.Add(cardToDraw)
                 End If
             End If
@@ -83,14 +70,10 @@ Public Class MainForm
 
     Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
         Dim selectedCard As Card = listHumanHand.SelectedItem
-
         If selectedCard.Color = Color.Wild Then
-            Dim result As DialogResult
-            result = WildColorForm.ShowDialog(Me)
-
+            Dim result As DialogResult = WildColorForm.ShowDialog(Me)
             If result = DialogResult.OK Then
-                Dim wildColor As Color
-                wildColor = WildColorForm.WildColor
+                Dim wildColor As Color = WildColorForm.WildColor
                 LogTurn(HumanPlayer, selectedCard, wildColor, 1)
                 HumanPlayer.Hand.Cards.Remove(selectedCard)
                 CurrentGame.PlayCard(selectedCard, wildColor)
@@ -117,8 +100,7 @@ Public Class MainForm
     End Sub
 
     Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
-        Dim result As DialogResult
-        result = OptionsForm.ShowDialog(Me)
+        Dim result As DialogResult = OptionsForm.ShowDialog(Me)
     End Sub
 
     Private Sub AboutQUnoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
@@ -164,7 +146,6 @@ Public Class MainForm
 
     Private Sub LogTurn(player As Player, card As Card, wildColor As Color?, mode As Integer)
         Dim message As String = String.Empty
-
         Select Case mode
             Case 0
                 message = player.Name + " played " + card.ToString()
@@ -173,7 +154,6 @@ Public Class MainForm
             Case 2
                 message = player.Name + " drew a card"
         End Select
-
         Log.Add(message)
         listGameLog.Items.Insert(0, message)
     End Sub
@@ -189,8 +169,7 @@ Public Class MainForm
     End Function
 
     Private Function FindWinner() As String
-        Dim winner As Player
-        winner = CurrentGame.Players.First(Function(p) p.Hand.Cards.Count = 0)
+        Dim winner As Player = CurrentGame.Players.First(Function(p) p.Hand.Cards.Count = 0)
         Return winner.Name
     End Function
 End Class
