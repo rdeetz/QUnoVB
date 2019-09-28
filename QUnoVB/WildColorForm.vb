@@ -1,14 +1,15 @@
 ﻿Imports Mooville.QUno.Model
 
 Public Class WildColorForm
-    Public WildColor As Color
+    Public Property WildColor As Color
 
     Private Sub WildColorForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         listColors.SelectedIndex = 0
     End Sub
 
     Private Sub ButtonOk_Click(sender As Object, e As EventArgs) Handles buttonOk.Click
-        Dim colorName As String = listColors.SelectedItem
+        Dim colorName As String
+        colorName = listColors.SelectedItem
         Select Case colorName
             Case "Red"
                 WildColor = Color.Red
