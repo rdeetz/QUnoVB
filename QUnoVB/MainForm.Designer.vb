@@ -63,14 +63,14 @@ Partial Class MainForm
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GameToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.mainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mainMenu.Name = "mainMenu"
-        Me.mainMenu.Size = New System.Drawing.Size(998, 48)
+        Me.mainMenu.Size = New System.Drawing.Size(998, 40)
         Me.mainMenu.TabIndex = 0
         '
         'GameToolStripMenuItem
         '
         Me.GameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.separatorGameMenu, Me.ExitToolStripMenuItem})
         Me.GameToolStripMenuItem.Name = "GameToolStripMenuItem"
-        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 40)
+        Me.GameToolStripMenuItem.Size = New System.Drawing.Size(97, 36)
         Me.GameToolStripMenuItem.Text = "&Game"
         '
         'NewToolStripMenuItem
@@ -95,7 +95,7 @@ Partial Class MainForm
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 40)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(90, 36)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'OptionsToolStripMenuItem
@@ -108,7 +108,7 @@ Partial Class MainForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 40)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(85, 36)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem

@@ -66,6 +66,21 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub ListHumanHand_KeyUp(sender As Object, e As KeyEventArgs) Handles listHumanHand.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            Dim selectedCard As Card = listHumanHand.SelectedItem
+            If CurrentGame.CanPlay(selectedCard) Then
+                PlayCardUI(selectedCard)
+                RefreshGameStatusUI()
+            End If
+        ElseIf e.KeyCode = Keys.Space Then
+            LogTurnUI(HumanPlayer, Nothing, Nothing, LogMode.Draw)
+            Dim drawnCard = CurrentGame.DrawCard()
+            HumanPlayer.Hand.Cards.Add(drawnCard)
+            RefreshGameStatusUI()
+        End If
+    End Sub
+
     Private Sub ButtonPlay_Click(sender As Object, e As EventArgs) Handles buttonPlay.Click
         Dim selectedCard As Card = listHumanHand.SelectedItem
         PlayCardUI(selectedCard)
