@@ -1,6 +1,7 @@
 # QUnoVB
 
-An Uno-like card game implemented rapid application development style.
+This is a very basic (get it?) implementation of a Windows desktop 
+application, targeting Windows Forms on the .NET Framework.
 
 ## Requirements
 
@@ -9,8 +10,7 @@ An Uno-like card game implemented rapid application development style.
 
 ## How To Play
 
-This is a very basic (get it?) implementation of a Windows desktop 
-application. Hopefully it's pretty straightforward to use the 
+Hopefully it's pretty straightforward to fire up the 
 graphical user interface to play the game in a WYSIWYG fashion.
 
 I tried to pay attention to detail, so you can play completely with 
