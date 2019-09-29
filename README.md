@@ -14,7 +14,7 @@ Hopefully it's pretty straightforward to fire up the
 graphical user interface to play the game in a WYSIWYG fashion.
 
 I tried to pay attention to detail, so you can play completely with 
-the keyboard: press `Enter` to play the selected card; press `space` 
+the keyboard: press `Enter` to play the selected card; press `Space` 
 to draw a card.
 
 ## Developer Notes
