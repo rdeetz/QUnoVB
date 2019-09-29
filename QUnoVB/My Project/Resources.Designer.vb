@@ -61,12 +61,75 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to {0} has {1} cards left.
+        '''</summary>
+        Friend ReadOnly Property ComputerPlayerNameAndStatus() As String
+            Get
+                Return ResourceManager.GetString("ComputerPlayerNameAndStatus", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {0} drew a card.
+        '''</summary>
+        Friend ReadOnly Property LogMessageDraw() As String
+            Get
+                Return ResourceManager.GetString("LogMessageDraw", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {0} played {1}.
+        '''</summary>
+        Friend ReadOnly Property LogMessagePlay() As String
+            Get
+                Return ResourceManager.GetString("LogMessagePlay", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {0} played {1} and chose {2}.
+        '''</summary>
+        Friend ReadOnly Property LogMessageWildPlay() As String
+            Get
+                Return ResourceManager.GetString("LogMessageWildPlay", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Player {0}.
+        '''</summary>
+        Friend ReadOnly Property PlayerNameTemplate() As String
+            Get
+                Return ResourceManager.GetString("PlayerNameTemplate", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property QUno() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("QUno", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Game in progress.
+        '''</summary>
+        Friend ReadOnly Property StatusGameInProgress() As String
+            Get
+                Return ResourceManager.GetString("StatusGameInProgress", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Game over! {0} is the winner..
+        '''</summary>
+        Friend ReadOnly Property StatusGameOver() As String
+            Get
+                Return ResourceManager.GetString("StatusGameOver", resourceCulture)
             End Get
         End Property
     End Module
