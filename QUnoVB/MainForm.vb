@@ -50,8 +50,12 @@ Public Class MainForm
     End Sub
 
     Private Sub ListHumanHand_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listHumanHand.SelectedIndexChanged
-        Dim selectedCard As Card = listHumanHand.SelectedItem
-        buttonPlay.Enabled = CurrentGame.CanPlay(selectedCard)
+        If Not listHumanHand.Enabled Then
+            buttonPlay.Enabled = False
+        Else
+            Dim selectedCard As Card = listHumanHand.SelectedItem
+            buttonPlay.Enabled = CurrentGame.CanPlay(selectedCard)
+        End If
     End Sub
 
     Private Sub ListHumanHand_DoubleClick(sender As Object, e As EventArgs) Handles listHumanHand.DoubleClick
